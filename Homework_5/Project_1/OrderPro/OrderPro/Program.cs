@@ -11,37 +11,26 @@ namespace OrderPro
     [Serializable]
     public class Order //订单类//一共有多少订单，订单的总价是多少等等
     {
-        int moneySum;
+        public int moneySum;
         public int MoneySum
         {
             get { return moneySum; }
-            set
-            {
-                foreach(OrderItem orderItem in orderItemList)
-                {
-                    moneySum += orderItem.moneySolo;
-                }
-            }
+            set { }         
         }
-        public string cusName;
-        public int OrderID; //总订单ID
-        int num;
+        public List<OrderItem> Items => orderItemList;
+        public string cusName { get; set; }
+        public int OrderID { get; set; }//总订单ID
+        public int num;
         public int Num {
             get { return num; }
-            set
-            {
-                foreach(OrderItem orderItem in orderItemList)
-                {
-                    num++;
-                }
-            }
+            set{ }
         }
         public List<OrderItem> orderItemList = new List<OrderItem>();
         public Order(int id,string name,List<OrderItem> list)
         {
             OrderID = id;
             cusName = name;
-            foreach(OrderItem orderItem in list)
+            foreach (OrderItem orderItem in list)
             {
                 orderItemList.Add(orderItem);
                 Num++;
@@ -72,9 +61,9 @@ namespace OrderPro
 
     public class OrderItem //订单明细类//用于作为具体某一个订单的抽象，通过实行具体的对象实现某一个订单
     {
-        public string proName;
-        public int orderID;
-        public int moneySolo;
+        public string proName { get; set; }
+        public int orderID { get; set; }
+        public int moneySolo { get; set; }
         public OrderItem(int id,int money,string name)
         {
             proName = name;
@@ -124,18 +113,16 @@ namespace OrderPro
         public void AddItem(Order order,OrderItem orderItem)//添加订单明细
         {
             order.orderItemList.Add(orderItem);
-            order.Num++;
-            order.MoneySum += orderItem.moneySolo;
+            order.num++;
+
+            order.moneySum += orderItem.moneySolo;
         }
         public void DelOrder(int id)//删除一个订单
         {
             var removeOd = from order in orders
                            where order.OrderID == id
-                           select order;
-            foreach(Order order in removeOd)
-            {
-                this.orders.Remove(order);
-            }
+                           select order;          
+            this.orders.Remove(removeOd.First());
         }
         public IEnumerable<Order> SortOd()//排序
         {
@@ -168,13 +155,18 @@ namespace OrderPro
     {
         static void Main(string[] args)
         {
-            OrderSevice order = new OrderSevice();
-            OrderItem item = new OrderItem(1, 2, "牙刷");
-            List<OrderItem> items = new List<OrderItem>(new OrderItem[] { item });
-            Order myorder = new Order(1, "张三", items);
-            order.AddOrder(myorder);
-            order.AddOrder(myorder);
-            Console.WriteLine(order.orders[0].ToString());
+            OrderSevice orderSevice = new OrderSevice();
+            Order order_1 = new Order(1, "张三", new List<OrderItem>(new OrderItem[] {
+                new OrderItem(1,5,"毛巾"),new OrderItem(2,3,"牙刷")
+            }));
+            Order order_2 = new Order(2, "李四", new List<OrderItem>(new OrderItem[] {
+                new OrderItem(1,5,"毛巾"),new OrderItem(2,3,"牙刷")
+            }));
+            orderSevice.AddOrder(order_1);
+            orderSevice.AddOrder(order_2);
+            orderSevice.ToString();
+            orderSevice.DelOrder(1);
+            orderSevice.ToString();
         }
     }
 }

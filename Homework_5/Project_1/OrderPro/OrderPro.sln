@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderPro", "OrderPro\OrderP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProTests", "OrderProTests\OrderProTests.csproj", "{5044D871-2385-4A05-88B9-E3C94FB737BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderWindow", "OrderWindow\OrderWindow.csproj", "{C424ACC0-0E26-4107-9C23-FC05FAD1D48E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5044D871-2385-4A05-88B9-E3C94FB737BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5044D871-2385-4A05-88B9-E3C94FB737BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5044D871-2385-4A05-88B9-E3C94FB737BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C424ACC0-0E26-4107-9C23-FC05FAD1D48E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C424ACC0-0E26-4107-9C23-FC05FAD1D48E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C424ACC0-0E26-4107-9C23-FC05FAD1D48E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C424ACC0-0E26-4107-9C23-FC05FAD1D48E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
